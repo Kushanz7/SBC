@@ -78,20 +78,20 @@ const HotelTypes: React.FC = () => {
 
   // Collection categories (grid items) remains the same
   const collectionCategories = [
-    { id: "pool-villa", title: "Private Pool Villas", image: "/images/pool-villa.jpg" },
-    { id: "all-inclusive", title: "All Inclusive", image: "/images/all-inclusive.jpg" },
-    { id: "beach-resort", title: "Coastal Resorts", image: "/images/beach-resort.jpg" },
-    { id: "city-break", title: "City Breaks", image: "/images/city-center.jpg" },
-    { id: "spa-resort", title: "Spa Resorts", image: "/images/spa-resort.jpg" },
-    { id: "eco-retreat", title: "Eco Retreats", image: "/images/eco-retreat.jpg" },
-    { id: "historical", title: "Historical", image: "/images/historical.jpg" },
-    { id: "lake", title: "Lake & Waterfront", image: "/images/lake.jpg" },
-    { id: "luxury", title: "Luxury Country", image: "/images/luxury.jpg" },
-    { id: "modern", title: "Modern Design", image: "/images/modern.jpg" },
-    { id: "golf", title: "Golf Resorts", image: "/images/golf.jpg" },
-    { id: "unesco", title: "UNESCO Sites", image: "/images/unesco.jpg" },
-    { id: "water-bungalow", title: "Water Bungalows", image: "/images/water-bungalow.jpg" },
-    { id: "vineyard", title: "Wine Experiences", image: "/images/wine.jpg" },
+    { id: "pool-villa", title: "Private Pool Villas", image: "/images/collection/pool-villa.jpg" },
+    { id: "all-inclusive", title: "All Inclusive", image: "/images/collection/all-inclusive.jpg" },
+    { id: "beach-resort", title: "Coastal Resorts", image: "/images/collection/beach-resort.jpg" },
+    { id: "city-break", title: "City Breaks", image: "/images/collection/city-center.jpg" },
+    { id: "spa-resort", title: "Spa Resorts", image: "/images/collection/spa-resort.jpg" },
+    { id: "eco-retreat", title: "Eco Retreats", image: "/images/collection/eco-retreat.jpg" },
+    { id: "historical", title: "Historical", image: "/images/collection/historical.jpg" },
+    { id: "lake", title: "Lake & Waterfront", image: "/images/collection/lake.jpg" },
+    { id: "luxury", title: "Luxury Country", image: "/images/collection/luxury.jpg" },
+    { id: "modern", title: "Modern Design", image: "/images/collection/modern.jpg" },
+    { id: "golf", title: "Golf Resorts", image: "/images/collection/golf.jpeg" },
+    { id: "unesco", title: "UNESCO Sites", image: "/images/collection/unesco.jpg" },
+    { id: "water-bungalow", title: "Water Bungalows", image: "/images/collection/water-bungalow.jpg" },
+    { id: "vineyard", title: "Wine Experiences", image: "/images/collection/wine.jpeg" },
   ];
 
   // Intersection Observer for scroll animations
@@ -119,8 +119,6 @@ const HotelTypes: React.FC = () => {
 
   return (
     <div className="relative h-full">
-      {/* Navigation */}
-      <NavBar />
 
       {/* Main Content - explicitly enable scrolling like in Moments.tsx */}
       <main className="pt-20 pb-10 h-full overflow-y-auto">

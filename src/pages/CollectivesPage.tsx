@@ -98,8 +98,6 @@ const CollectivesPage = () => {
 
   return (
     <div className="relative h-full">
-      {/* Navigation */}
-      <NavBar />
 
       {/* Main Content - explicitly enable scrolling like in Moments.tsx */}
       <main className="pt-20 pb-10 h-full overflow-y-auto">
