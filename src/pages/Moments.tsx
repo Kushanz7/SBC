@@ -91,12 +91,12 @@ const Moments: React.FC = () => {
   }, [selectedFilter]);
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative h-full">
       {/* Navigation */}
       <NavBar />
 
       {/* Main Content - explicitly enable scrolling */}
-      <main className="pt-20 overflow-y-auto">
+      <main className="pt-20 pb-10 h-full overflow-y-auto">
         {/* Hero Section */}
         <div className="relative bg-gray-50 py-24">
           <div className="container mx-auto px-6 text-center">
@@ -204,13 +204,12 @@ const Moments: React.FC = () => {
       </main>
 
       <style>{`
-        html, body {
+        html, body, #__next {
           height: 100%;
           width: 100%;
           margin: 0;
           padding: 0;
-          overflow-y: auto !important;
-          overscroll-behavior-y: none;
+          overflow-y: auto;
         }
         
         @keyframes fadeIn {
