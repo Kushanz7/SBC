@@ -117,19 +117,36 @@ const HotelTypes: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  const videos = ['/b5.mp4'];
+  const [currentVideoIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   return (
     <div className="relative h-full">
-
-      {/* Main Content - explicitly enable scrolling like in Moments.tsx */}
-      <main className="pt-20 pb-10 h-full overflow-y-auto">
+      {/* Main Content - explicitly enable scrolling */}
+      <main className="pb-10 h-full overflow-y-auto">
         {/* Hero Section */}
-        <div 
-          ref={heroRef} 
-          className="relative bg-cover bg-center h-[80vh] flex items-center justify-center"
-          style={{ backgroundImage: 'url("/images/hotel-types-hero.jpg")' }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-30" />
-          <div className="container mx-auto px-6 text-center relative z-10 text-white animate-fade-in">
+        <div className="relative w-full h-[80vh] overflow-hidden" id="hero">
+          {/* Video background with crossfade transition */}
+          <video
+            key={videos[currentVideoIndex]}
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute w-full h-full object-cover transition-opacity duration-1000 opacity-100"
+            onLoadedData={(e) => e.currentTarget.play()}
+          >
+            <source src={videos[currentVideoIndex]} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/20 z-10" />
+
+          {/* Content */}
+          <div className="container mx-auto px-6 text-center relative z-10 text-white flex flex-col items-center justify-center h-full">
             <h1 className="text-5xl md:text-6xl font-light mb-6">
               Find Your <span className="font-normal">Perfect Stay</span>
             </h1>

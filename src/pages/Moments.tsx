@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Heart, Share2, MapPin } from 'lucide-react';
-import NavBar from '../components/Navbar';
 
 interface Moment {
   id: string;
@@ -51,7 +50,7 @@ const Moments: React.FC = () => {
       category: 'Adventure',
       location: 'Swiss Alps',
       hotel: 'Mountain Peak Lodge',
-      image: 'https://images.unsplash.com/photo-1464822759844-d150baec0494?w=500&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=500&h=400&fit=crop',
       description: 'Explore breathtaking mountain trails with expert guides'
     },
     {
@@ -90,21 +89,46 @@ const Moments: React.FC = () => {
     }
   }, [selectedFilter]);
 
+  const videos = ['/b4.mp4']; // Add more video paths if needed
+
+  const [currentVideoIndex] = useState(0); // For now, just one video
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   return (
     <div className="relative h-full">
-
       {/* Main Content - explicitly enable scrolling */}
-      <main className="pt-20 pb-10 h-full overflow-y-auto">
+      <main className="h-full overflow-y-auto">
         {/* Hero Section */}
-        <div className="relative bg-gray-50 py-24">
-          <div className="container mx-auto px-6 text-center">
-            <h1 className="text-5xl font-light text-gray-900 mb-6 animate-fade-in">
-              Capture Your Perfect
-              <span className="block font-normal text-gray-700">Moments</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed animate-fade-in-delay">
-              Discover extraordinary experiences and create lasting memories at our curated collection of hotels worldwide
-            </p>
+        <div className="relative w-full h-150 overflow-hidden" id="hero">
+          {/* Video background with crossfade transition */}
+          <video
+            key={videos[currentVideoIndex]}
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute w-full h-full object-cover transition-opacity duration-1000 opacity-100"
+            onLoadedData={(e) => e.currentTarget.play()}
+          >
+            <source src={videos[currentVideoIndex]} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/20 z-10" />
+
+          {/* Content */}
+           <div className="relative container mx-auto px-6 h-full flex items-center justify-center text-center">
+            <div>
+              <h1 className="text-6xl font-light text-white mb-6 animate-fade-in">
+                Capture Your Perfect
+                <span className="block font-normal text-white mt-2">Moments</span>
+              </h1>
+              <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed animate-fade-in-delay">
+                Discover extraordinary experiences and create lasting memories at our curated collection of hotels worldwide
+              </p>
+            </div>
           </div>
         </div>
 
@@ -200,35 +224,6 @@ const Moments: React.FC = () => {
           </div>
         </div>
       </main>
-
-      <style>{`
-        html, body, #__next {
-          height: 100%;
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          overflow-y: auto;
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fade-in {
-          animation: fadeIn 0.8s ease-out;
-        }
-        
-        .animate-fade-in-delay {
-          animation: fadeIn 0.8s ease-out 0.3s both;
-        }
-      `}</style>
     </div>
   );
 };

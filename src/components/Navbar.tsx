@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
   const menuItems = [
@@ -12,28 +13,60 @@ export default function NavBar() {
     "Bookmarks", "Our Services", "About Us", "Contact Us",
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 10); // Lower threshold to 10px
+      console.log('Scroll position:', scrollTop); // Debug logging
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Initial check on mount
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="absolute top-0 left-0 z-50 w-full">
-      <div className="flex items-center justify-between px-6 py-4 bg-transparent text-white">
+    <header className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
+      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    }`}>
+      <div className={`flex items-center justify-between px-6 py-4 transition-colors duration-300 ${
+        isScrolled ? 'text-black' : 'text-white'
+      }`}>
         {/* Hamburger menu button with improved hover animation */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="relative w-15 h-15 rounded-full bg-white/30 flex items-center justify-center z-50 hover:bg-white/50 transition-all duration-300"
+          className={`relative w-15 h-15 rounded-full flex items-center justify-center z-50 transition-all duration-300 ${
+            isScrolled 
+              ? 'bg-black/10 hover:bg-black/20' 
+              : 'bg-white/30 hover:bg-white/50'
+          }`}
           aria-label="Toggle menu"
         >
           {isOpen ? (
-            <X size={25} className="text-black transition-opacity duration-200" />
+            <X size={25} className={`transition-opacity duration-200 ${
+              isScrolled ? 'text-black' : 'text-black'
+            }`} />
           ) : (
             <div className="flex flex-col items-center justify-center w-full h-full">
               {isHovered ? (
-                <span className="text-white text-gl font-light tracking-wide animate-fadeIn">MENU</span>
+                <span className={`text-gl font-light tracking-wide animate-fadeIn ${
+                  isScrolled ? 'text-black' : 'text-white'
+                }`}>MENU</span>
               ) : (
                 <div className="flex flex-col items-center justify-center space-y-2 animate-fadeIn">
-                  <span className="w-8 h-0.5 bg-white block"></span>
-                  <span className="w-6 h-0.5 bg-white block"></span>
-                  <span className="w-7 h-0.5 bg-white block"></span>
+                  <span className={`w-8 h-0.5 block ${
+                    isScrolled ? 'bg-black' : 'bg-white'
+                  }`}></span>
+                  <span className={`w-6 h-0.5 block ${
+                    isScrolled ? 'bg-black' : 'bg-white'
+                  }`}></span>
+                  <span className={`w-7 h-0.5 block ${
+                    isScrolled ? 'bg-black' : 'bg-white'
+                  }`}></span>
                 </div>
               )}
             </div>
@@ -43,7 +76,9 @@ export default function NavBar() {
         {/* Logo centered */}
         <button
           onClick={() => navigate('/')}
-          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-light tracking-wide whitespace-nowrap bg-transparent border-none cursor-pointer text-white"
+          className={`absolute left-1/2 transform -translate-x-1/2 text-2xl font-light tracking-wide whitespace-nowrap bg-transparent border-none cursor-pointer transition-colors duration-300 ${
+            isScrolled ? 'text-black' : 'text-white'
+          }`}
           style={{ outline: 'none' }}
           aria-label="Go to Home"
         >
@@ -53,7 +88,9 @@ export default function NavBar() {
         {/* Right side elements styled like the image */}
         <div className="flex items-center space-x-4">
           <div className="hidden md:flex items-center gap-6">
-            <a href="/bookings" className="flex flex-col items-center text-sm hover:text-yellow-400 transition-colors">
+            <a href="/bookings" className={`flex flex-col items-center text-sm hover:text-yellow-400 transition-colors ${
+              isScrolled ? 'text-black' : 'text-white'
+            }`}>
               <svg className="h-5 w-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeWidth="2" />
                 <line x1="16" y1="2" x2="16" y2="6" strokeWidth="2" />
@@ -62,7 +99,9 @@ export default function NavBar() {
               </svg>
               <span className="text-xs tracking-wide">BOOKINGS</span>
             </a>
-            <a href="/login" className="flex flex-col items-center text-sm hover:text-yellow-400 transition-colors">
+            <a href="/login" className={`flex flex-col items-center text-sm hover:text-yellow-400 transition-colors ${
+              isScrolled ? 'text-black' : 'text-white'
+            }`}>
               <svg className="h-5 w-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="8" r="5" strokeWidth="2" />
                 <path d="M3 21v-2a7 7 0 0114 0v2" strokeWidth="2" />
@@ -183,7 +222,7 @@ export default function NavBar() {
       {/* Overlay that appears when drawer is open */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-opacity-50 z-30"
+          className="fixed inset-0 bg-black bg-opacity-50 z-30"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />

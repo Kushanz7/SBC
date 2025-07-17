@@ -11,17 +11,17 @@ function App() {
   return (
     <>
     <BrowserRouter>
-    <div className="w-screen h-screen overflow-hidden bg-black">
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/moments" element={<Moments />} />
-        <Route path="/hotel-types" element={<HotelTypes />} />
-        <Route path="/collectives" element={<CollectivesPage />} />
-        {/* Add other routes here */}
-      </Routes>
-      </div>
-      </BrowserRouter>
+  <div className="w-screen h-screen bg-black"> {/* Removed overflow-hidden */}
+    <NavBar />
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/moments" element={<Moments />} />
+      <Route path="/hotel-types" element={<HotelTypes />} />
+      <Route path="/collectives" element={<CollectivesPage />} />
+      {/* Add other routes here */}
+    </Routes>
+  </div>
+</BrowserRouter>
     </>
   )
 }

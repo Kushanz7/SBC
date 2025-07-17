@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, MapPin, Star, Users, Calendar, ArrowRight, Filter, Search, X } from 'lucide-react';
 import NavBar from '../components/Navbar';
 
@@ -8,6 +8,11 @@ const CollectivesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isLoaded, setIsLoaded] = useState(false);
+  
+  // Add these lines for video support
+  const videos = ['/b3.mp4'];
+  const [currentVideoIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -97,64 +102,82 @@ const CollectivesPage = () => {
   });
 
   return (
-    <div className="relative h-full">
+    <div className="relative h-full bg-white">
+      {/* Main Content - explicitly enable scrolling */}
+      <main className="pb-10 h-full overflow-y-auto">
+        {/* Hero Section with Video */}
+        <div className="relative w-full h-[80vh] overflow-hidden" id="hero">
+          {/* Video background with crossfade transition */}
+          <video
+            key={videos[currentVideoIndex]}
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute w-full h-full object-cover transition-opacity duration-1000 opacity-100"
+            onLoadedData={(e) => e.currentTarget.play()}
+          >
+            <source src={videos[currentVideoIndex]} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          
+          {/* Dark overlay for better text visibility */}
+          <div className="absolute inset-0 bg-black/30 z-10"></div>
 
-      {/* Main Content - explicitly enable scrolling like in Moments.tsx */}
-      <main className="pt-20 pb-10 h-full overflow-y-auto">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 to-stone-100">
-          <div className={`container mx-auto px-6 pt-10 pb-16 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl md:text-6xl font-light text-slate-900 mb-6 tracking-tight">
-                The <span className="font-medium text-amber-600">Collectives</span>
+          {/* Hero content */}
+          <div className="relative z-20 container mx-auto px-6 h-full flex flex-col justify-center">
+            <div className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <h1 className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight">
+                The <span className="font-medium text-amber-400">Collectives</span>
               </h1>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+              <p className="text-xl text-white/90 mb-8 leading-relaxed">
                 Thoughtfully curated hotel collections that tell extraordinary stories
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <div className="flex items-center gap-2 text-slate-700">
+                <div className="flex items-center gap-2 text-white/80">
                   <Users className="w-5 h-5" />
                   <span className="text-sm">50+ Premium Hotels</span>
                 </div>
-                <div className="hidden sm:block w-px h-6 bg-slate-300"></div>
-                <div className="flex items-center gap-2 text-slate-700">
+                <div className="hidden sm:block w-px h-6 bg-white/30"></div>
+                <div className="flex items-center gap-2 text-white/80">
                   <MapPin className="w-5 h-5" />
                   <span className="text-sm">25+ Destinations</span>
                 </div>
-                <div className="hidden sm:block w-px h-6 bg-slate-300"></div>
-                <div className="flex items-center gap-2 text-slate-700">
-                  <Star className="w-5 h-5 fill-current text-amber-500" />
+                <div className="hidden sm:block w-px h-6 bg-white/30"></div>
+                <div className="flex items-center gap-2 text-white/80">
+                  <Star className="w-5 h-5 fill-current text-amber-400" />
                   <span className="text-sm">4.8 Average Rating</span>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Search and Filter */}
-        <section className="container mx-auto px-6 mb-12">
+        <section className="container mx-auto px-6 mb-12 mt-12">
           <div className={`max-w-4xl mx-auto transition-all duration-1000 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6">
               <div className="flex flex-col md:flex-row gap-4">
-                {/* Search */}
+                {/* Search - Improved contrast */}
                 <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 w-5 h-5" />
                   <input
                     type="text"
                     placeholder="Search collections..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all duration-200"
+                    className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all duration-200 text-slate-800 placeholder-slate-500 bg-white"
                   />
                 </div>
                 
-                {/* Filter Toggle */}
+                {/* Filter Toggle - Improved contrast */}
                 <button
                   onClick={() => setFilterOpen(!filterOpen)}
-                  className="flex items-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors duration-200"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors duration-200 text-slate-800 border border-slate-300"
                 >
-                  <Filter className="w-5 h-5" />
-                  <span>Filter</span>
+                  <Filter className="w-5 h-5 text-slate-700" />
+                  <span className="font-medium">Filter</span>
                 </button>
               </div>
               
@@ -168,7 +191,7 @@ const CollectivesPage = () => {
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                         selectedCategory === category.id
                           ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/30'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-300'
                       }`}
                     >
                       {category.name} ({category.count})
@@ -325,7 +348,7 @@ const CollectivesPage = () => {
           </div>
         </section>
       </main>
-
+      
       {/* Using the same style block as in Moments.tsx */}
       <style>{`
         html, body, #__next {
