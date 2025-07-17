@@ -41,9 +41,14 @@ export default function NavBar() {
         </button>
         
         {/* Logo centered */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-light tracking-wide whitespace-nowrap">
+        <button
+          onClick={() => navigate('/')}
+          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-light tracking-wide whitespace-nowrap bg-transparent border-none cursor-pointer text-white"
+          style={{ outline: 'none' }}
+          aria-label="Go to Home"
+        >
           Story Book Collectives
-        </div>
+        </button>
         
         {/* Right side elements styled like the image */}
         <div className="flex items-center space-x-4">
@@ -97,6 +102,30 @@ export default function NavBar() {
                       onClick={() => {
                         setIsOpen(false);
                         navigate('/moments');
+                      }}
+                    >
+                      <span className="inline-block transform group-hover:translate-x-2 group-hover:scale-105 group-hover:opacity-90 transition-all duration-300">
+                        {item}
+                      </span>
+                    </button>
+                  ) : item === "Hotel Types" ? (
+                    <button
+                      className="block text-2xl text-black hover:text-yellow-500 transition-all duration-300 py-4 pl-4 font-light text-left w-full group"
+                      onClick={() => {
+                        setIsOpen(false);
+                        navigate('/hotel-types');
+                      }}
+                    >
+                      <span className="inline-block transform group-hover:translate-x-2 group-hover:scale-105 group-hover:opacity-90 transition-all duration-300">
+                        {item}
+                      </span>
+                    </button>
+                  ) : item === "The Collectives" ? (
+                    <button
+                      className="block text-2xl text-black hover:text-yellow-500 transition-all duration-300 py-4 pl-4 font-light text-left w-full group"
+                      onClick={() => {
+                        setIsOpen(false);
+                        navigate('/collectives');
                       }}
                     >
                       <span className="inline-block transform group-hover:translate-x-2 group-hover:scale-105 group-hover:opacity-90 transition-all duration-300">
