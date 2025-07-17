@@ -22,7 +22,7 @@ const HotelTypes: React.FC = () => {
       title: "Boutique Hotels",
       description: "Intimate, design-forward accommodations offering personalized service and unique character.",
       image: "/images/boutique.jpg",
-      background: "bg-amber-50",
+      background: "bg-green-50",
     },
     {
       id: "beachfront",
@@ -191,7 +191,7 @@ const HotelTypes: React.FC = () => {
           id="featured-section"
         >
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-light italic text-gray-800 mb-16">
+            <h2 className="text-3xl font-light italic text-white-800 mb-16">
               Pillars of Boutique Luxury
             </h2>
             
@@ -243,7 +243,7 @@ const HotelTypes: React.FC = () => {
             >
               <div className="w-full md:w-1/2 p-12 md:p-16 lg:p-20 flex items-center">
                 <div>
-                  <h2 className="text-3xl font-light mb-6">{category.title}</h2>
+                  <h2 className="text-black text-3xl font-light mb-6">{category.title}</h2>
                   <p className="text-gray-700 mb-8">
                     {category.description}
                   </p>
@@ -295,7 +295,7 @@ const HotelTypes: React.FC = () => {
           id="collection-section"
         >
           <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-light text-center mb-16">
+            <h2 className="text-black text-3xl font-light text-center mb-16">
               Explore Our Collections
             </h2>
             
@@ -317,11 +317,18 @@ const HotelTypes: React.FC = () => {
                     alt={item.title} 
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                  {/* Dark overlay with transition */}
+                  <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-60 transition-all duration-300"></div>
+                  
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                     <h3 className="text-lg font-medium">{item.title}</h3>
-                    <div className="w-10 h-0.5 bg-white mt-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    
+                    {/* Animated underline */}
+                    <div className="relative h-0.5 bg-transparent mt-2 mb-2 overflow-hidden">
+                      <div className="w-0 h-0.5 bg-white absolute left-0 top-0 group-hover:w-10 transition-all duration-500 ease-out"></div>
+                    </div>
+                    
+                    <span className="text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                       View Properties →
                     </span>
                   </div>

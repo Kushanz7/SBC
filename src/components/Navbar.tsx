@@ -114,7 +114,7 @@ export default function NavBar() {
 
       {/* Drawer sidebar that slides from left */}
       <div 
-        className={`fixed top-0 left-0 w-2/4 h-full bg-white transform transition-transform duration-300 ease-in-out z-40 ${
+        className={`fixed top-0 left-0 w-1/4 h-full bg-white transform transition-transform duration-300 ease-in-out z-40 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -222,7 +222,8 @@ export default function NavBar() {
       {/* Overlay that appears when drawer is open */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-30"
+          className="fixed inset-0 bg-black z-30 transition-opacity duration-300 ease-in-out"
+          style={{ opacity: isOpen ? 0.5 : 0 }}
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />

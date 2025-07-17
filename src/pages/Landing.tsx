@@ -380,7 +380,7 @@ export default function LandingPage() {
                   alt="Pool Hotels" 
                   className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-white text-xl font-medium">Pool Hotels</h3>
                   <div className="w-10 h-0.5 bg-white my-2"></div>
@@ -395,11 +395,11 @@ export default function LandingPage() {
                   alt="Beach Hotels" 
                   className="w-full h-40 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-4 left-4">
-                  <h3 className="text-white text-lg font-medium">Beach Hotels</h3>
-                  <div className="w-8 h-0.5 bg-white my-1"></div>
-                  <p className="text-white text-xs">Explore properties</p>
+                  <h3 className="text-black text-lg font-medium">Beach Hotels</h3>
+                  <div className="w-8 h-0.5 bg-black my-1"></div>
+                  <p className="text-black text-xs">Explore properties</p>
                 </div>
               </div>
               
@@ -409,11 +409,11 @@ export default function LandingPage() {
                   alt="Adults Only Hotels" 
                   className="w-full h-40 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-4 left-4">
-                  <h3 className="text-white text-lg font-medium">Adults Only Hotels</h3>
-                  <div className="w-8 h-0.5 bg-white my-1"></div>
-                  <p className="text-white text-xs">Explore properties</p>
+                  <h3 className="text-black text-lg font-medium">Adults Only Hotels</h3>
+                  <div className="w-8 h-0.5 bg-black my-1"></div>
+                  <p className="text-black text-xs">Explore properties</p>
                 </div>
               </div>
               
@@ -424,7 +424,7 @@ export default function LandingPage() {
                   alt="All Inclusive Resorts" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                <div className="absolute inset-0 bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
                 <div className="absolute bottom-6 left-6">
                   <h3 className="text-white text-xl font-medium">All Inclusive Resorts</h3>
                   <div className="w-10 h-0.5 bg-white my-2"></div>
@@ -454,11 +454,20 @@ export default function LandingPage() {
                   alt="Spa Treatment of Excellence" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-white text-xl font-medium">Spa Treatment of Excellence</h3>
-                  <div className="w-10 h-0.5 bg-white my-2"></div>
-                  <p className="text-white text-sm">Explore more</p>
+                {/* Dark overlay with transition */}
+                <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-60 transition-all duration-300"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-xl font-medium">Spa Treatment of Excellence</h3>
+                  
+                  {/* Animated underline */}
+                  <div className="relative h-0.5 bg-transparent mt-2 mb-2 overflow-hidden">
+                    <div className="w-0 h-0.5 bg-white absolute left-0 top-0 group-hover:w-10 transition-all duration-500 ease-out"></div>
+                  </div>
+                  
+                  <span className="text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    Explore more →
+                  </span>
                 </div>
               </div>
               
@@ -469,11 +478,20 @@ export default function LandingPage() {
                   alt="Suite Upgrades" 
                   className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-white text-xl font-medium">Suite Upgrades</h3>
-                  <div className="w-10 h-0.5 bg-white my-2"></div>
-                  <p className="text-white text-sm">Explore more</p>
+                {/* Dark overlay with transition */}
+                <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-60 transition-all duration-300"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-xl font-medium">Suite Upgrades</h3>
+                  
+                  {/* Animated underline */}
+                  <div className="relative h-0.5 bg-transparent mt-2 mb-2 overflow-hidden">
+                    <div className="w-0 h-0.5 bg-white absolute left-0 top-0 group-hover:w-10 transition-all duration-500 ease-out"></div>
+                  </div>
+                  
+                  <span className="text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    Explore more →
+                  </span>
                 </div>
               </div>
               
@@ -484,11 +502,20 @@ export default function LandingPage() {
                   alt="3 Course Dinner" 
                   className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-white text-lg font-medium">3 Course Dinner</h3>
-                  <div className="w-8 h-0.5 bg-white my-1"></div>
-                  <p className="text-white text-xs">Explore more</p>
+                {/* Dark overlay with transition */}
+                <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-60 transition-all duration-300"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <h3 className="text-lg font-medium">3 Course Dinner</h3>
+                  
+                  {/* Animated underline */}
+                  <div className="relative h-0.5 bg-transparent mt-2 mb-2 overflow-hidden">
+                    <div className="w-0 h-0.5 bg-white absolute left-0 top-0 group-hover:w-10 transition-all duration-500 ease-out"></div>
+                  </div>
+                  
+                  <span className="text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    Explore more →
+                  </span>
                 </div>
               </div>
               
@@ -499,11 +526,20 @@ export default function LandingPage() {
                   alt="Complimentary Golf" 
                   className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
-                <div className="absolute bottom-6 left-6">
-                  <h3 className="text-white text-lg font-medium">Complimentary Golf</h3>
-                  <div className="w-8 h-0.5 bg-white my-1"></div>
-                  <p className="text-white text-xs">Explore more</p>
+                {/* Dark overlay with transition */}
+                <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-60 transition-all duration-300"></div>
+                
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <h3 className="text-lg font-medium">Complimentary Golf</h3>
+                  
+                  {/* Animated underline */}
+                  <div className="relative h-0.5 bg-transparent mt-2 mb-2 overflow-hidden">
+                    <div className="w-0 h-0.5 bg-white absolute left-0 top-0 group-hover:w-10 transition-all duration-500 ease-out"></div>
+                  </div>
+                  
+                  <span className="text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                    Explore more →
+                  </span>
                 </div>
               </div>
             </div>
