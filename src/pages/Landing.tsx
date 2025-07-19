@@ -280,7 +280,7 @@ export default function LandingPage() {
           
         </div>
         {/* Add this section to your landing page */}
-        <div className="py-6 bg-[#faf6f2] overflow-hidden">
+        <div className="bg-[#faf6f2] pb-12 overflow-hidden">
           <div 
             className="marquee-container"
             ref={(el) => { sectionRefs.current[5] = el; }}
@@ -661,8 +661,16 @@ export default function LandingPage() {
         .marquee-text {
           display: inline-block;
           white-space: nowrap;
-          padding-left: 100%;
           will-change: transform;
+        }
+
+        /* For responsive text size */
+        @media (max-width: 768px) {
+          .marquee-text span {
+            font-size: 1.25rem; /* Smaller text on mobile */
+            margin-left: 0.75rem;
+            margin-right: 0.75rem;
+          }
         }
       `}</style>
     </div>

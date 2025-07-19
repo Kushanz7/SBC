@@ -232,31 +232,42 @@ const HotelTypes: React.FC = () => {
           {hotelCategories.map((category, index) => (
             <div 
               key={category.id}
-              className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} ${category.background} transition-all duration-800 ${
+              className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} ${category.background} transition-all duration-1000 ease-out ${
                 visibleSections.has('categories-section') 
                   ? 'opacity-100 translate-x-0' 
-                  : `opacity-0 ${index % 2 === 0 ? '-translate-x-12' : 'translate-x-12'}`
+                  : `opacity-0 ${index % 2 === 0 ? '-translate-x-24' : 'translate-x-24'}`
               }`}
               style={{ 
-                transitionDelay: `${index * 300}ms` 
+                transitionDelay: `${index * 200}ms` 
               }}
             >
               <div className="w-full md:w-1/2 p-12 md:p-16 lg:p-20 flex items-center">
-                <div>
-                  <h2 className="text-black text-3xl font-light mb-6">{category.title}</h2>
+                <div className={`transition-all duration-1000 delay-200 ${
+                  visibleSections.has('categories-section') 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-12'
+                }`}>
+                  <h2 className="text-black text-3xl font-light mb-6">
+                    {category.title}
+                  </h2>
                   <p className="text-gray-700 mb-8">
                     {category.description}
                   </p>
-                  <button className="px-6 py-3 bg-amber-800 text-white hover:bg-amber-900 transition-colors rounded-full text-sm">
-                    VIEW MORE →
+                  <button className="px-6 py-3 bg-amber-800 text-white hover:bg-amber-900 transition-colors rounded-full text-sm overflow-hidden group relative">
+                    <span className="relative z-10">VIEW MORE →</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-full bg-amber-900 transition-all duration-300 group-hover:w-full"></span>
                   </button>
                 </div>
               </div>
-              <div className="w-full md:w-1/2 h-80 md:h-auto">
+              <div className="w-full md:w-1/2 h-80 md:h-auto overflow-hidden">
                 <img 
                   src={category.image} 
                   alt={category.title} 
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover transition-all duration-1500 ${
+                    visibleSections.has('categories-section') 
+                      ? 'scale-100 filter-none' 
+                      : 'scale-110 filter blur-sm'
+                  }`}
                 />
               </div>
             </div>
