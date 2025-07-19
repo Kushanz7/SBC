@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Search, MapPin, Calendar, Users, ArrowRight } from 'lucide-react';
+import { gsap } from 'gsap';
 
 export default function LandingPage() {
   const [arrowBounce, setArrowBounce] = useState(false);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const destinationsRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>(Array(6).fill(null));
   
   const videos = [
     "/b.mp4",
@@ -85,6 +87,27 @@ export default function LandingPage() {
       }
     }
   };
+
+  // Marquee animation
+  useEffect(() => {
+    const marqueeText = document.querySelector('.marquee-text');
+    if (marqueeText) {
+      // Get the width of first set of items (half of the total content)
+      const contentWidth = (marqueeText as HTMLElement).offsetWidth / 2;
+      
+      // Create the looping animation
+      gsap.to(marqueeText, {
+        x: `-${contentWidth}px`,
+        ease: "none",
+        duration: 20,
+        repeat: -1,
+        // Reset position when complete for seamless loop
+        onRepeat: function() {
+          gsap.set(marqueeText, { x: 0 });
+        }
+      });
+    }
+  }, []);
 
   return (
     <div className="relative h-full">
@@ -192,7 +215,7 @@ export default function LandingPage() {
         </div>
 
         {/* Destinations Section - Minimalistic White UI */}
-        <div id="destinations" ref={destinationsRef} className="bg-[#faf6f2] py-16 md:py-24 scroll-mt-8">
+        <div id="destinations" ref={destinationsRef} className="bg-[#faf6f2] py-16 md:py-14 scroll-mt-10">
           <div className="container mx-auto px-4 md:px-8">
             {/* Three Column Destinations */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -205,7 +228,7 @@ export default function LandingPage() {
                     className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="font-medium text-lg mb-1">In With The Old</h3>
+                <h3 className="text-black font-medium text-lg mb-1">In With The Old</h3>
                 <p className="text-gray-600 text-sm mb-6 px-4">
                   Experience historic elegance through our collection of beautifully restored properties that blend timeless architecture with contemporary comfort, creating spaces that tell stories of the past.
                 </p>
@@ -223,7 +246,7 @@ export default function LandingPage() {
                     className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="font-medium text-lg mb-1">Seaside Bliss</h3>
+                <h3 className="text-black font-medium text-lg mb-1">Seaside Bliss</h3>
                 <p className="text-gray-600 text-sm mb-6 px-4">
                   Discover our carefully curated oceanfront havens where the rhythmic sounds of waves become your daily soundtrack and every sunrise paints a new masterpiece on your horizon.
                 </p>
@@ -241,7 +264,7 @@ export default function LandingPage() {
                     className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="font-medium text-lg mb-1">Urban Vibes</h3>
+                <h3 className="text-black font-medium text-lg mb-1">Urban Vibes</h3>
                 <p className="text-gray-600 text-sm mb-6 px-4">
                   Immerse yourself in culture and energy with our city center sanctuaries, offering refined luxury amidst the vibrant pulse of metropolitan life with access to the best local experiences.
                 </p>
@@ -249,6 +272,39 @@ export default function LandingPage() {
                   VIEW MORE →
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          
+        </div>
+        {/* Add this section to your landing page */}
+        <div className="py-6 bg-[#faf6f2] overflow-hidden">
+          <div 
+            className="marquee-container"
+            ref={(el) => { sectionRefs.current[5] = el; }}
+          >
+            <div className="marquee-text">
+              {/* First set of items */}
+              <span className="mx-8 text-2xl text-amber-800 font-light">LUXURY</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">•</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">BOUTIQUE</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">•</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">EXPERIENCE</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">•</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">CURATED</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">•</span>
+              
+              {/* Duplicate set of items for seamless looping */}
+              <span className="mx-8 text-2xl text-amber-800 font-light">LUXURY</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">•</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">BOUTIQUE</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">•</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">EXPERIENCE</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">•</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">CURATED</span>
+              <span className="mx-8 text-2xl text-amber-800 font-light">•</span>
             </div>
           </div>
         </div>
@@ -264,7 +320,7 @@ export default function LandingPage() {
                 <div className="w-24 h-24 mb-6 relative flex items-center justify-center">
                   <img src="/images/icons/globe.png" alt="Curated Stays" className="max-w-full max-h-full" />
                 </div>
-                <h3 className="font-medium text-gray-900 mb-2">Curated Stays</h3>
+                <h3 className="text-black font-medium text-gray-900 mb-2">Curated Stays</h3>
                 <p className="text-gray-600 text-sm mb-6">
                   Each property in our collection has been handpicked for its exceptional quality, unique character, and outstanding service.
                 </p>
@@ -278,7 +334,7 @@ export default function LandingPage() {
                 <div className="w-24 h-24 mb-6 relative flex items-center justify-center">
                   <img src="/images/icons/flower.png" alt="Perfectly Tailored" className="max-w-full max-h-full" />
                 </div>
-                <h3 className="font-medium text-gray-900 mb-2">Perfectly Tailored</h3>
+                <h3 className="text-black font-medium text-gray-900 mb-2">Perfectly Tailored</h3>
                 <p className="text-gray-600 text-sm mb-6">
                   We customize every experience to match your preferences, creating bespoke journeys that reflect your unique travel style.
                 </p>
@@ -292,7 +348,7 @@ export default function LandingPage() {
                 <div className="w-24 h-24 mb-6 relative flex items-center justify-center">
                   <img src="/images/icons/balloon.png" alt="Exclusive Connections" className="max-w-full max-h-full" />
                 </div>
-                <h3 className="font-medium text-gray-900 mb-2">Exclusive Connections</h3>
+                <h3 className="text-black font-medium text-gray-900 mb-2">Exclusive Connections</h3>
                 <p className="text-gray-600 text-sm mb-6">
                   Our global network provides access to private experiences and special arrangements that transform ordinary trips into extraordinary memories.
                 </p>
@@ -319,7 +375,7 @@ export default function LandingPage() {
                     className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="font-medium text-lg mb-1">Give the Gift of Travel</h3>
+                <h3 className="text-black font-medium text-lg mb-1">Give the Gift of Travel</h3>
                 <p className="text-gray-600 text-sm mb-6 px-4">
                   A Storybook Collectives gift card is more than just a present—it's the promise of extraordinary experiences and memories that will last a lifetime.
                 </p>
@@ -337,7 +393,7 @@ export default function LandingPage() {
                     className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="font-medium text-lg mb-1">Exclusive Retreats</h3>
+                <h3 className="text-black font-medium text-lg mb-1">Exclusive Retreats</h3>
                 <p className="text-gray-600 text-sm mb-6 px-4">
                   Discover our private sanctuaries where luxury, privacy, and personalized service come together to create unforgettable moments of tranquility.
                 </p>
@@ -355,7 +411,7 @@ export default function LandingPage() {
                     className="w-full h-64 object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="font-medium text-lg mb-1">Characterful Hotels</h3>
+                <h3 className="text-black font-medium text-lg mb-1">Characterful Hotels</h3>
                 <p className="text-gray-600 text-sm mb-6 px-4">
                   Each of our properties tells its own unique story through thoughtful design, cultural connections, and authentic experiences that capture the essence of its location.
                 </p>
@@ -558,7 +614,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 md:px-8">
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-full md:w-1/2">
-                <h2 className="text-3xl font-light mb-6">Give the Gift of Travel</h2>
+                <h2 className="text-black text-3xl font-light mb-6">Give the Gift of Travel</h2>
                 <p className="text-gray-700 mb-6">
                   A Storybook Collectives gift card is more than just a present—it's the promise of extraordinary experiences and memories that will last a lifetime. Perfect for special occasions or just because.
                 </p>
@@ -594,6 +650,19 @@ export default function LandingPage() {
         
         * {
           scroll-behavior: smooth;
+        }
+
+        .marquee-container {
+          width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        .marquee-text {
+          display: inline-block;
+          white-space: nowrap;
+          padding-left: 100%;
+          will-change: transform;
         }
       `}</style>
     </div>
