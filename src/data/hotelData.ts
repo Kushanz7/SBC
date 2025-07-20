@@ -75,7 +75,7 @@ export const dummyHotel: Hotel = {
   mainImage: "/images/hotels/can-ferrereta/main.jpg",
   images: [
     "/images/hotels/can-ferrereta/main.jpg",
-    "/images/hotels/can-ferrereta/lobby.jpg",
+    "/images/hotels/can-ferrereta/lobby.jpeg",
     "/images/hotels/can-ferrereta/pool.jpg",
     "/images/hotels/can-ferrereta/restaurant.jpg",
     "/images/hotels/can-ferrereta/garden.jpg",
@@ -154,7 +154,7 @@ export const dummyHotel: Hotel = {
       score: 4.9,
       maxScore: 5,
       reviewCount: 49,
-      logo: "/images/ratings/sh-logo.png"
+      logo: "/images/ratings/sh-logo.jpg"
     },
     {
       source: "Small Club Rating",
