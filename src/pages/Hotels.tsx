@@ -1,14 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
 import { dummyHotel } from '../data/hotelData';
-import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaStar, FaCalendarAlt, FaUser } from 'react-icons/fa';
 
 const HotelPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
   const hotel = dummyHotel; // In a real app, you would fetch the hotel by ID
   
-  const [selectedRoomIndex, setSelectedRoomIndex] = useState(0);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [checkInDate, setCheckInDate] = useState('');
@@ -301,7 +297,7 @@ const HotelPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-light text-center mb-10">Our Rooms</h2>
           
-          {hotel.rooms.map((room, index) => (
+          {hotel.rooms.map((room) => (
             <div key={room.id} className="mb-16 last:mb-0">
               <div className="flex flex-col md:flex-row border border-gray-200">
                 <div className="w-full md:w-1/2">

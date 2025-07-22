@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": ".",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -15,8 +16,8 @@
     "@tailwindcss/vite": "^4.1.11",
     "@types/react-router-dom": "^5.3.3",
     "clsx": "^2.1.1",
-    "gsap": "^3.13.0",
     "framer-motion": "^6.0.0",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.525.0",
     "motion": "^12.23.6",
     "react": "^19.1.0",
@@ -25,13 +26,15 @@
     "react-responsive": "^10.0.1",
     "react-router-dom": "^7.6.3",
     "react-use": "^17.6.0",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "wouter": "^3.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
     "@types/gsap": "^1.20.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "@types/wouter": "^2.0.1",
     "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.30.1",

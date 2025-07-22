@@ -1,16 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-interface HotelType {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  background: string;
-}
-
 const HotelTypes: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
   const categoriesRef = useRef<HTMLDivElement>(null);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 

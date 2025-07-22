@@ -1,6 +1,5 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NavBar from './components/common/Navbar';
 import Landing from './pages/Landing';
 import Moments from './pages/Moments';
 import HotelTypes from './pages/HotelTypes';
@@ -9,6 +8,7 @@ import gsap from 'gsap';
 import { ScrollTrigger, SplitText } from 'gsap/all';
 import HotelPage from './pages/Hotels';
 import AboutUs from './pages/AboutUs';
+import MainLayout from './layouts/MainLayout';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -16,8 +16,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="w-screen h-screen bg-black">
-          <NavBar />
+        <MainLayout>
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/moments" element={<Moments />} />
@@ -27,7 +26,7 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             {/* Add other routes here */}
           </Routes>
-        </div>
+        </MainLayout>
       </BrowserRouter>
     </>
   )

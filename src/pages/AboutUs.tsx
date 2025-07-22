@@ -1,12 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 
 const AboutUs: React.FC = () => {
-  const ethosRef = useRef<HTMLDivElement>(null);
-  const valuesRef = useRef<HTMLDivElement>(null);
-  const peopleRef = useRef<HTMLDivElement>(null);
-  const collectionsRef = useRef<HTMLDivElement>(null);
   
   return (
     <div className="min-h-screen bg-white">
