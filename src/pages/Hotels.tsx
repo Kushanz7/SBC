@@ -27,8 +27,6 @@ const HotelPage: React.FC = () => {
   
   return (
     <div className="min-h-screen bg-white">
-      <NavBar />
-      
       {/* Hero section with main image */}
       <section className="relative h-[60vh] md:h-[80vh]">
         <div className="absolute inset-0 z-10 bg-black/30"></div>
