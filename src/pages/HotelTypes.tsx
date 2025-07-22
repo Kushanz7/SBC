@@ -1,88 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { hotelCategories, featuredCategories, collectionCategories } from '../data/hoteltypes'; // Adjust the import path as necessary
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const HotelTypes: React.FC = () => {
   const categoriesRef = useRef<HTMLDivElement>(null);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-
-  // Hotel Categories data remains the same
-  const hotelCategories = [
-    {
-      id: "boutique",
-      title: "Boutique Hotels",
-      description: "Intimate, design-forward accommodations offering personalized service and unique character.",
-      image: "/images/boutique.jpg",
-      background: "bg-green-50",
-    },
-    {
-      id: "beachfront",
-      title: "Beachfront Hotels",
-      description: "Stunning oceanside retreats where paradise meets luxury with direct access to pristine shores.",
-      image: "/images/beachfront.jpg",
-      background: "bg-blue-50",
-    },
-    {
-      id: "island",
-      title: "Private Island Resorts",
-      description: "Exclusive escapes surrounded by crystal waters offering unparalleled privacy and serenity.",
-      image: "/images/island.jpg",
-      background: "bg-teal-50",
-    },
-    {
-      id: "safari",
-      title: "Wildlife & Safari",
-      description: "Immersive nature experiences where luxury meets the wild, bringing you closer to extraordinary wildlife.",
-      image: "/images/safari.jpg",
-      background: "bg-amber-100",
-    },
-    {
-      id: "winter",
-      title: "Winter Sun",
-      description: "Warm escapes during the cold months, offering sunshine, relaxation, and vibrant activities.",
-      image: "/images/winter-sun.jpg",
-      background: "bg-blue-50",
-    },
-  ];
-
-  // Featured categories with icons remains the same
-  const featuredCategories = [
-    {
-      id: "curated",
-      title: "Curated Stays",
-      description: "Hand-picked exceptional properties verified for quality, service, and unique experiences by our travel experts.",
-      icon: "/images/icons/globe.png"
-    },
-    {
-      id: "perfectly",
-      title: "Perfectly Tailored",
-      description: "Customized experiences designed around your preferences, from dining to activities and special occasions.",
-      icon: "/images/icons/flower.png"
-    },
-    {
-      id: "exclusive",
-      title: "Exclusive Connections",
-      description: "Access to private experiences, local insights, and special arrangements through our global network.",
-      icon: "/images/icons/balloon.png"
-    }
-  ];
-
-  // Collection categories (grid items) remains the same
-  const collectionCategories = [
-    { id: "pool-villa", title: "Private Pool Villas", image: "/images/collection/pool-villa.jpg" },
-    { id: "all-inclusive", title: "All Inclusive", image: "/images/collection/all-inclusive.jpg" },
-    { id: "beach-resort", title: "Coastal Resorts", image: "/images/collection/beach-resort.jpg" },
-    { id: "city-break", title: "City Breaks", image: "/images/collection/city-center.jpg" },
-    { id: "spa-resort", title: "Spa Resorts", image: "/images/collection/spa-resort.jpg" },
-    { id: "eco-retreat", title: "Eco Retreats", image: "/images/collection/eco-retreat.jpg" },
-    { id: "historical", title: "Historical", image: "/images/collection/historical.jpg" },
-    { id: "lake", title: "Lake & Waterfront", image: "/images/collection/lake.jpg" },
-    { id: "luxury", title: "Luxury Country", image: "/images/collection/luxury.jpg" },
-    { id: "modern", title: "Modern Design", image: "/images/collection/modern.jpg" },
-    { id: "golf", title: "Golf Resorts", image: "/images/collection/golf.jpeg" },
-    { id: "unesco", title: "UNESCO Sites", image: "/images/collection/unesco.jpg" },
-    { id: "water-bungalow", title: "Water Bungalows", image: "/images/collection/water-bungalow.jpg" },
-    { id: "vineyard", title: "Wine Experiences", image: "/images/collection/wine.jpeg" },
-  ];
-
   // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -104,6 +27,40 @@ const HotelTypes: React.FC = () => {
     sections.forEach(section => observer.observe(section));
 
     return () => observer.disconnect();
+  }, []);
+
+  // Register GSAP plugin
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
+
+  // GSAP scroll animation for Hotel Categories Section
+  useEffect(() => {
+    if (!categoriesRef.current) return;
+
+    const categoryRows = categoriesRef.current.querySelectorAll('.hotel-category-row');
+    categoryRows.forEach((row, i) => {
+      gsap.fromTo(
+        row,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out',
+          delay: i * 0.15,
+          scrollTrigger: {
+            trigger: row,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   const videos = ['/b5.mp4'];
@@ -212,30 +169,23 @@ const HotelTypes: React.FC = () => {
         </div>
         
         {/* Main Hotel Categories Section */}
-        <div 
-          className="categories-section" 
+        <div
+          className="categories-section"
           ref={categoriesRef}
           data-animate
           id="categories-section"
         >
           {hotelCategories.map((category, index) => (
-            <div 
+            <div
               key={category.id}
-              className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} ${category.background} transition-all duration-1000 ease-out ${
-                visibleSections.has('categories-section') 
-                  ? 'opacity-100 translate-x-0' 
-                  : `opacity-0 ${index % 2 === 0 ? '-translate-x-24' : 'translate-x-24'}`
-              }`}
-              style={{ 
-                transitionDelay: `${index * 200}ms` 
+              className={`hotel-category-row flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} ${category.background} transition-all duration-1000 ease-out`}
+              style={{
+                opacity: 0, // Initial state for GSAP
+                transform: 'translateY(60px)', // Initial state for GSAP
               }}
             >
               <div className="w-full md:w-1/2 p-12 md:p-16 lg:p-20 flex items-center">
-                <div className={`transition-all duration-1000 delay-200 ${
-                  visibleSections.has('categories-section') 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-12'
-                }`}>
+                <div>
                   <h2 className="text-black text-3xl font-light mb-6">
                     {category.title}
                   </h2>
@@ -249,14 +199,10 @@ const HotelTypes: React.FC = () => {
                 </div>
               </div>
               <div className="w-full md:w-1/2 h-80 md:h-auto overflow-hidden">
-                <img 
-                  src={category.image} 
-                  alt={category.title} 
-                  className={`w-full h-full object-cover transition-all duration-1500 ${
-                    visibleSections.has('categories-section') 
-                      ? 'scale-100 filter-none' 
-                      : 'scale-110 filter blur-sm'
-                  }`}
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="w-full h-full object-cover transition-all duration-1500"
                 />
               </div>
             </div>

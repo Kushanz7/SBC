@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Search, MapPin, Calendar, Users } from 'lucide-react';
 import { gsap } from 'gsap';
-import Navigation from '../components/common/Navbar';
 
 export default function LandingPage() {
   const [arrowBounce, setArrowBounce] = useState(false);

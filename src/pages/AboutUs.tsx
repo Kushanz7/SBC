@@ -6,6 +6,20 @@ const AboutUs: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       
+       {/* Full Width Banner */}
+      <section className="relative h-96 md:h-[500px] overflow-hidden">
+        <img 
+          src="/images/about-us/pool-view.jpg" 
+          alt="Pool with ocean view" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black opacity-30"></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+          <h2 className="text-3xl md:text-4xl font-light mb-4">OUR STORY</h2>
+          <p className="max-w-2xl px-6">From humble beginnings to becoming a collection of the world's most distinctive boutique hotels</p>
+        </div>
+      </section>
+
       {/* Hero Section */}
       <section className="pt-20 md:pt-24">
         <div className="container mx-auto px-4 md:px-8">
@@ -132,7 +146,8 @@ const AboutUs: React.FC = () => {
                 alt="Management Team" 
                 className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+              <div className="absolute inset-0 bg-black opacity-30"></div>
+              <div className="absolute inset-0 flex items-end">
                 <div className="p-6">
                   <h3 className="text-white text-xl mb-1">Management Team</h3>
                   <Link to="/team" className="text-white hover:text-amber-200 text-sm">Learn more →</Link>
@@ -146,7 +161,8 @@ const AboutUs: React.FC = () => {
                 alt="Hotel Staff" 
                 className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+              <div className="absolute inset-0 bg-black opacity-30"></div>
+              <div className="absolute inset-0 flex items-end">
                 <div className="p-6">
                   <h3 className="text-white text-xl mb-1">The Wider Storybook Family</h3>
                   <Link to="/team" className="text-white hover:text-amber-200 text-sm">Learn more →</Link>
@@ -160,7 +176,8 @@ const AboutUs: React.FC = () => {
                 alt="Local Partners" 
                 className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+              <div className="absolute inset-0 bg-black opacity-30"></div>
+              <div className="absolute inset-0 flex items-end">
                 <div className="p-6">
                   <h3 className="text-white text-xl mb-1">Join the Team</h3>
                   <Link to="/careers" className="text-white hover:text-amber-200 text-sm">Learn more →</Link>
@@ -193,19 +210,6 @@ const AboutUs: React.FC = () => {
               />
             </div>
           </div>
-        </div>
-      </section>
-      
-      {/* Full Width Banner */}
-      <section className="relative h-96 md:h-[500px] overflow-hidden">
-        <img 
-          src="/images/about-us/pool-view.jpg" 
-          alt="Pool with ocean view" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col items-center justify-center text-white text-center">
-          <h2 className="text-3xl md:text-4xl font-light mb-4">OUR STORY</h2>
-          <p className="max-w-2xl px-6">From humble beginnings to becoming a collection of the world's most distinctive boutique hotels</p>
         </div>
       </section>
       
