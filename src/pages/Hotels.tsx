@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { dummyHotel } from '../data/hotelData';
 import { motion } from 'framer-motion';
-import NavBar from '../components/Navbar';
 import { FaMapMarkerAlt, FaStar, FaCalendarAlt, FaUser } from 'react-icons/fa';
 
 const HotelPage: React.FC = () => {

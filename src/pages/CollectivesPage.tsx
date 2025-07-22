@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronRight, MapPin, Star, Users, Calendar, ArrowRight, Filter, Search, X } from 'lucide-react';
-import NavBar from '../components/Navbar';
+import NavBar from '../components/common/Navbar';
 
 const CollectivesPage = () => {
   const [activeCollection, setActiveCollection] = useState<number | null>(null);

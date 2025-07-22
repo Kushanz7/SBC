@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import NavBar from '../components/Navbar';
 
 interface HotelType {
   id: string;

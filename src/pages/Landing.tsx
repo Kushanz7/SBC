@@ -111,6 +111,7 @@ export default function LandingPage() {
 
   return (
     <div className="relative h-full">
+     
       {/* Main Content - explicitly enable scrolling */}
       <main className="h-full overflow-y-auto">
         {/* Hero Section */}
