@@ -135,7 +135,10 @@ export default function LandingPage() {
 
         {/* Hero Content - similar structure to public-landing */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center h-full flex flex-col items-center justify-center">
-          <h1 className="text-4xl md:text-6xl font-semibold mb-6 text-white mt-28">
+          <h1 
+            className="text-4xl md:text-6xl font-semibold mb-6 text-white mt-18 tracking-wider"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
             SUSTAINABLE SANCTUARIES
           </h1>
           <p className="mb-8 text-lg md:text-xl text-white">Explore Considerate Collection</p>
@@ -179,7 +182,7 @@ export default function LandingPage() {
             </button>
           </div>
           
-          <button className="group flex items-center justify-center gap-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full py-4 px-8 text-white hover:bg-white/30 transition-all duration-500">
+          <button className="mb-28 group flex items-center justify-center gap-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full py-4 px-8 text-white hover:bg-white/30 transition-all duration-500">
             EXPLORE CONSIDERATE COLLECTION 
             <div className="flex items-center justify-center">
               <span className="group-hover:bg-white group-hover:p-2 group-hover:rounded-full transform group-hover:rotate-0 -rotate-180 transition-all duration-500 flex items-center justify-center">
@@ -193,7 +196,7 @@ export default function LandingPage() {
           {/* Animated down arrow button */}
           <button 
             onClick={handleScrollToDestinations} 
-            className="absolute bottom-10 animate-bounce transition-all duration-500 cursor-pointer bg-transparent border-0 focus:outline-none"
+            className="mt-7 absolute bottom-10 animate-bounce transition-all duration-500 cursor-pointer bg-transparent border-0 focus:outline-none"
             aria-label="Scroll to destinations"
           >
             <div className="flex flex-col items-center">
