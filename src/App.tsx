@@ -9,6 +9,7 @@ import { ScrollTrigger, SplitText } from 'gsap/all';
 import HotelPage from './pages/Hotels';
 import AboutUs from './pages/AboutUs';
 import MainLayout from './layouts/MainLayout';
+import ContactUs from './pages/ContactUs';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/collectives" element={<CollectivesPage />} />
             <Route path="/hotel" element={<HotelPage />} />
             <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
             {/* Add other routes here */}
           </Routes>
         </MainLayout>

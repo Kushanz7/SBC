@@ -36,6 +36,14 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
       navigate('/hotel-types');
     } else if (item === "The Collectives") {
       navigate('/collectives');
+    } else if (item === "Bookmarks") {
+      navigate('/bookmarks');
+    } else if (item === "Our Services") {
+      navigate('/our-services');
+    } else if (item === "About Us") {
+      navigate('/about-us');
+    } else if (item === "Contact Us") {
+      navigate('/contact-us');
     } else {
       navigate(`/${item.toLowerCase().replace(/\s+/g, '-')}`);
     }
