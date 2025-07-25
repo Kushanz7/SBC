@@ -10,6 +10,7 @@ import HotelPage from './pages/Hotels';
 import AboutUs from './pages/AboutUs';
 import MainLayout from './layouts/MainLayout';
 import ContactUs from './pages/ContactUs';
+import OurServices from './pages/OurServices';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/hotel" element={<HotelPage />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/our-services" element={<OurServices />} />
             {/* Add other routes here */}
           </Routes>
         </MainLayout>
