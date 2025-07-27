@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
-import { gsap } from 'gsap';
 
 const ContactUs = () => {
   const floatingImagesRef = useRef<HTMLDivElement>(null);
@@ -89,7 +88,9 @@ const ContactUs = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-600/90 via-amber-100/40 to-teal-50/30 relative overflow-hidden pb-20">
+    <div className="min-h-screen relative overflow-hidden pb-20">
+      {/* Amber bar under the navbar */}
+      <div className="w-full h-20 bg-amber-900 flex items-center px-8 z-30 relative shadow-md"> </div>
       {/* Floating Images - Now using real images */}
       <div 
         ref={floatingImagesRef}
@@ -136,25 +137,23 @@ const ContactUs = () => {
           className="floating-image absolute w-20 h-20 object-cover rounded-lg shadow-lg bottom-10 right-40 z-0"
         />
       </div>
-
       {/* Content */}
       <div className="container mx-auto px-4 pt-28 relative z-10">
         <div className="text-center mb-16">
           <h1 
             ref={titleRef}
-            className="text-amber-50 text-4xl md:text-5xl font-light mb-4 opacity-0 transform translate-y-12 transition-all duration-800"
+            className="text-amber-700 text-4xl md:text-5xl font-light mb-4 opacity-0 transform translate-y-12 transition-all duration-800"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Connect With Us
           </h1>
           <p 
             ref={subtitleRef}
-            className="text-amber-100 text-lg max-w-xl mx-auto opacity-0 transform translate-y-8 transition-all duration-800"
+            className="text-amber-500 text-lg max-w-xl mx-auto opacity-0 transform translate-y-8 transition-all duration-800"
           >
             We'd love to hear from you. Our team is always here to help you plan your perfect stay.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form - Removed dummy values */}
           <div 
@@ -231,7 +230,6 @@ const ContactUs = () => {
               </div>
             </div>
           </div>
-
           {/* Contact Info */}
           <div ref={contactInfoRef} className="flex flex-col justify-center">
             <div className="bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-xl mb-8 border border-gray-200">
@@ -336,7 +334,6 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-
       {/* Map Section */}
       <div className="container mx-auto px-4 mt-16">
         <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-gray-200">

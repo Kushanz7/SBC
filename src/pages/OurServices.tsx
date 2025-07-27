@@ -97,7 +97,7 @@ const OurServices: React.FC = () => {
       }
       
       // Animate each service card
-      serviceItemsRef.current.forEach((item, index) => {
+      serviceItemsRef.current.forEach((item) => {
         const card = item.querySelector('.service-card');
         const image = item.querySelector('.service-image');
         const content = item.querySelector('.service-content');

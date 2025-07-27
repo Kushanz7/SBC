@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { hotelCategories, featuredCategories, collectionCategories } from '../data/hoteltypes'; // Adjust the import path as necessary
+import { hotelCategories, featuredCategories, collectionCategories } from '../data/hoteltypes';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -68,9 +68,9 @@ const HotelTypes: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
-    <div className="relative h-full">
-      {/* Main Content - explicitly enable scrolling */}
-      <main className="pb-10 h-full overflow-y-auto">
+    <div className="relative min-h-screen">
+      {/* Main Content - remove h-full and overflow-y-auto */}
+      <main className="pb-10">
         {/* Hero Section */}
         <div className="relative w-full h-[80vh] overflow-hidden" id="hero">
           {/* Video background with crossfade transition */}
@@ -300,16 +300,8 @@ const HotelTypes: React.FC = () => {
         </div>
       </main>
 
-      {/* Using the same style block as in Moments.tsx */}
+      {/* Remove the style block with html, body, #__next settings as they can interfere with scrolling */}
       <style>{`
-        html, body, #__next {
-          height: 100%;
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          overflow-y: auto;
-        }
-        
         @keyframes fadeIn {
           from {
             opacity: 0;
